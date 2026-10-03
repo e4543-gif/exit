@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" id="themeColor" content="#15253D">
+<title>سجل استئذان المعلمين</title>
+<link rel="icon" type="image/svg+xml" href='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%2315253D%22/%3E%3Cg transform=%22translate(13.5 5) scale(.5)%22%3E%3Cg fill=%22none%22 stroke=%22%23D4B06A%22 stroke-width=%225%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M13 11C23 5 41 5 51 11C47.5 15 41.5 16.5 37.5 17.5L36 27H28L26.5 17.5C22.5 16.5 16.5 15 13 11Z%22/%3E%3Cpath d=%22M21.5 27H42.5C42.5 31 40.5 33 37.5 33H26.5C23.5 33 21.5 31 21.5 27Z%22/%3E%3Cpath d=%22M24 33C23 52 23 70 25 84C27 98 37 106 47 104C52 103 55 99 56.5 95M40 33C39 46 38 58 38 70C38 82 40 90 45 92.5C49 94.5 52 94 54.5 92.5%22/%3E%3Cpath d=%22M24.2 41Q32 44 39.8 41M23.8 49Q31 52 39.3 49%22/%3E%3Ccircle cx=%2220%22 cy=%2245%22 r=%222.4%22/%3E%3Ccircle cx=%2220.4%22 cy=%2266%22 r=%222.4%22/%3E%3C/g%3E%3Cg fill=%22%23D4B06A%22%3E%3Ccircle cx=%2257%22 cy=%2291.5%22 r=%223%22/%3E%3Ccircle cx=%2231%22 cy=%2258%22 r=%221.3%22/%3E%3Ccircle cx=%2231%22 cy=%2266%22 r=%221.3%22/%3E%3Ccircle cx=%2231.4%22 cy=%2274%22 r=%221.3%22/%3E%3Ccircle cx=%2232.6%22 cy=%2282%22 r=%221.3%22/%3E%3Ccircle cx=%2235.4%22 cy=%2289.5%22 r=%221.3%22/%3E%3Ccircle cx=%2240%22 cy=%2295.5%22 r=%221.3%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E'>
+<link rel="preconnect" href="https://iuclootkunogsreaampr.supabase.co" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=Readex+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+<script>(function(){try{var t=localStorage.getItem("hawari_theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<style>
+/* =========================================================
+   الهوية: نيلي عُماني + نحاس الخنجر + فضّة الغِمد
+   ========================================================= */
+:root{
+  --top-h:58px; --sub-h:36px; --nav-h:70px;
+  --font:'Readex Pro','IBM Plex Sans Arabic','Segoe UI',Tahoma,sans-serif;
+  --display:'Reem Kufi','Readex Pro','Segoe UI',Tahoma,sans-serif;
+  --r-panel:22px; --r-card:16px; --r-ctl:13px;
+  --k-mask:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%2211 3 52 106%22%3E%3Cg fill=%22none%22 stroke=%22%23000%22 stroke-width=%223.2%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M13 11C23 5 41 5 51 11C47.5 15 41.5 16.5 37.5 17.5L36 27H28L26.5 17.5C22.5 16.5 16.5 15 13 11Z%22/%3E%3Cpath d=%22M21.5 27H42.5C42.5 31 40.5 33 37.5 33H26.5C23.5 33 21.5 31 21.5 27Z%22/%3E%3Cpath d=%22M24 33C23 52 23 70 25 84C27 98 37 106 47 104C52 103 55 99 56.5 95M40 33C39 46 38 58 38 70C38 82 40 90 45 92.5C49 94.5 52 94 54.5 92.5%22/%3E%3Cpath d=%22M24.2 41Q32 44 39.8 41M23.8 49Q31 52 39.3 49%22/%3E%3Ccircle cx=%2220%22 cy=%2245%22 r=%222.4%22/%3E%3Ccircle cx=%2220.4%22 cy=%2266%22 r=%222.4%22/%3E%3C/g%3E%3Cg fill=%22%23000%22%3E%3Ccircle cx=%2257%22 cy=%2291.5%22 r=%223%22/%3E%3Ccircle cx=%2231%22 cy=%2258%22 r=%221.3%22/%3E%3Ccircle cx=%2231%22 cy=%2266%22 r=%221.3%22/%3E%3Ccircle cx=%2231.4%22 cy=%2274%22 r=%221.3%22/%3E%3Ccircle cx=%2232.6%22 cy=%2282%22 r=%221.3%22/%3E%3Ccircle cx=%2235.4%22 cy=%2289.5%22 r=%221.3%22/%3E%3Ccircle cx=%2240%22 cy=%2295.5%22 r=%221.3%22/%3E%3C/g%3E%3C/svg%3E");
+  color-scheme:light;
+
+  --bg:#ECEFF2; --surface:#FFFFFF; --surface-2:#F8F9FB; --well:#EEF1F5;
+  --line:#DCE2E8; --edge:#CBD3DC; --text:#18212D; --muted:#5D6977; --heading:#14233A;
+  --btn:#1A2D4B; --btn-hi:#25406A; --btn-edge:#0E1A2E; --btn-fg:#F7F1E3;
+  --slab:#15253D; --slab-hi:#1C3152; --slab-edge:#0B1424;
+  --gold:#B38B3F; --gold-hi:#D4B06A; --gold-edge:#80612A; --gold-ink:#241805;
+  --silver:#9EAAB6;
+  --ok:#1F6F57; --ok-soft:#E1F1EA; --ok-edge:#C3DFD2;
+  --warn:#A8323A; --warn-soft:#F9E6E6; --warn-edge:#EDC6C7;
+  --gold-soft:#F6EEDC; --gold-soft-edge:#E8D6AE;
+  --hi:rgba(255,255,255,.9); --shade:rgba(20,35,58,.14); --shade-in:rgba(20,35,58,.07);
+  --scrim:rgba(10,16,26,.55);
+  --pattern:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2246%22 height=%2246%22%3E%3Cg fill=%22none%22 stroke=%22%2314233A%22 stroke-opacity=%220.05%22 stroke-width=%221%22%3E%3Ccircle cx=%220%22 cy=%220%22 r=%223.5%22/%3E%3Ccircle cx=%2246%22 cy=%220%22 r=%223.5%22/%3E%3Ccircle cx=%220%22 cy=%2246%22 r=%223.5%22/%3E%3Ccircle cx=%2246%22 cy=%2246%22 r=%223.5%22/%3E%3Cpath d=%22M23 17.5 L28.5 23 L23 28.5 L17.5 23Z%22/%3E%3C/g%3E%3Cg fill=%22%2314233A%22 fill-opacity=%220.05%22%3E%3Ccircle cx=%2223%22 cy=%220%22 r=%221%22/%3E%3Ccircle cx=%220%22 cy=%2223%22 r=%221%22/%3E%3Ccircle cx=%2246%22 cy=%2223%22 r=%221%22/%3E%3Ccircle cx=%2223%22 cy=%2246%22 r=%221%22/%3E%3C/g%3E%3C/svg%3E");
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ color-scheme:dark;
+    --bg:#0C121B; --surface:#162030; --surface-2:#131C2A; --well:#0E1621;
+    --line:#243146; --edge:#070B12; --text:#E5E9EF; --muted:#95A2B4; --heading:#F1E7D0;
+    --btn:#2A4470; --btn-hi:#345286; --btn-edge:#111D33; --btn-fg:#F7F1E3;
+    --slab:#111A29; --slab-hi:#172338; --slab-edge:#070B12;
+    --gold:#CBA55A; --gold-hi:#E2C27E; --gold-edge:#8A6A2C; --gold-ink:#1E1508;
+    --silver:#6F7C8E;
+    --ok:#63C4A0; --ok-soft:#13302A; --ok-edge:#0A1A16;
+    --warn:#F08C8C; --warn-soft:#3A1D23; --warn-edge:#1C0D10;
+    --gold-soft:#2C2617; --gold-soft-edge:#18140B;
+    --hi:rgba(255,255,255,.05); --shade:rgba(0,0,0,.5); --shade-in:rgba(0,0,0,.35);
+    --scrim:rgba(0,0,0,.66);
+    --pattern:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2246%22 height=%2246%22%3E%3Cg fill=%22none%22 stroke=%22%23CBA55A%22 stroke-opacity=%220.06%22 stroke-width=%221%22%3E%3Ccircle cx=%220%22 cy=%220%22 r=%223.5%22/%3E%3Ccircle cx=%2246%22 cy=%220%22 r=%223.5%22/%3E%3Ccircle cx=%220%22 cy=%2246%22 r=%223.5%22/%3E%3Ccircle cx=%2246%22 cy=%2246%22 r=%223.5%22/%3E%3Cpath d=%22M23 17.5 L28.5 23 L23 28.5 L17.5 23Z%22/%3E%3C/g%3E%3Cg fill=%22%23CBA55A%22 fill-opacity=%220.06%22%3E%3Ccircle cx=%2223%22 cy=%220%22 r=%221%22/%3E%3Ccircle cx=%220%22 cy=%2223%22 r=%221%22/%3E%3Ccircle cx=%2246%22 cy=%2223%22 r=%221%22/%3E%3Ccircle cx=%2223%22 cy=%2246%22 r=%221%22/%3E%3C/g%3E%3C/svg%3E");
+  }
+  :root:not([data-theme="light"]) .logo img{filter:brightness(1.22) saturate(1.1)}
+}
+:root[data-theme="dark"]{ color-scheme:dark;
+    --bg:#0C121B; --surface:#162030; --surface-2:#131C2A; --well:#0E1621;
+    --line:#243146; --edge:#070B12; --text:#E5E9EF; --muted:#95A2B4; --heading:#F1E7D0;
+    --btn:#2A4470; --btn-hi:#345286; --btn-edge:#111D33; --btn-fg:#F7F1E3;
+    --slab:#111A29; --slab-hi:#172338; --slab-edge:#070B12;
+    --gold:#CBA55A; --gold-hi:#E2C27E; --gold-edge:#8A6A2C; --gold-ink:#1E1508;
+    --silver:#6F7C8E;
+    --ok:#63C4A0; --ok-soft:#13302A; --ok-edge:#0A1A16;
+    --warn:#F08C8C; --warn-soft:#3A1D23; --warn-edge:#1C0D10;
+    --gold-soft:#2C2617; --gold-soft-edge:#18140B;
+    --hi:rgba(255,255,255,.05); --shade:rgba(0,0,0,.5); --shade-in:rgba(0,0,0,.35);
+    --scrim:rgba(0,0,0,.66);
+    --pattern:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2246%22 height=%2246%22%3E%3Cg fill=%22none%22 stroke=%22%23CBA55A%22 stroke-opacity=%220.06%22 stroke-width=%221%22%3E%3Ccircle cx=%220%22 cy=%220%22 r=%223.5%22/%3E%3Ccircle cx=%2246%22 cy=%220%22 r=%223.5%22/%3E%3Ccircle cx=%220%22 cy=%2246%22 r=%223.5%22/%3E%3Ccircle cx=%2246%22 cy=%2246%22 r=%223.5%22/%3E%3Cpath d=%22M23 17.5 L28.5 23 L23 28.5 L17.5 23Z%22/%3E%3C/g%3E%3Cg fill=%22%23CBA55A%22 fill-opacity=%220.06%22%3E%3Ccircle cx=%2223%22 cy=%220%22 r=%221%22/%3E%3Ccircle cx=%220%22 cy=%2223%22 r=%221%22/%3E%3Ccircle cx=%2246%22 cy=%2223%22 r=%221%22/%3E%3Ccircle cx=%2223%22 cy=%2246%22 r=%221%22/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ================= Base ================= */
+*{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+:root{padding-top:env(safe-area-inset-top,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px); background:var(--bg)}
+html,body{height:100%; margin:0}
+body{
+  background:var(--pattern) center top / 46px 46px, var(--bg);
+  color:var(--text); font-family:var(--font); font-size:16px; line-height:1.65; font-weight:400;
+  -webkit-font-smoothing:antialiased;
+}
+html.theming, html.theming *{transition:background-color .3s ease, color .3s ease, border-color .3s ease !important}
+button,input,textarea{font-family:inherit; font-size:inherit; color:inherit}
+button{cursor:pointer; touch-action:manipulation}
+:focus-visible{outline:2px solid var(--gold); outline-offset:3px}
+.k{display:block; color:var(--gold); stroke-width:3.4; flex:none}
+
+/* Shared depth: hairline + soft shadow (أخف وأسرع رسماً) */
+.panel,.stat,.item,.hist .h,.nav,.pick button,.pickrow{
+  --lift: inset 0 1px 0 var(--hi), 0 1px 2px var(--shade-in), 0 10px 28px -16px var(--shade);
+}
+
+/* ================= Top bar ================= */
+.topbar{position:fixed; inset:0 0 auto 0; z-index:30; color:#fff;
+  padding-top:env(safe-area-inset-top,0px);
+  background:linear-gradient(180deg, var(--slab-hi), var(--slab));
+  box-shadow:0 1px 0 color-mix(in srgb, var(--gold) 55%, transparent), 0 12px 28px -14px rgba(0,0,0,.45);
+  border-radius:0 0 20px 20px}
+.topbar .bar{position:relative; height:var(--top-h); display:flex; align-items:center; justify-content:center}
+.topbar .bar::after, .ov-head::after{content:""; position:absolute; left:18%; right:18%; bottom:0; height:8px;
+  background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2218%22 height=%228%22%3E%3Ccircle cx=%224.5%22 cy=%224%22 r=%222.4%22 fill=%22none%22 stroke=%22%23D4B06A%22 stroke-width=%221%22/%3E%3Ccircle cx=%2213.5%22 cy=%224%22 r=%221.1%22 fill=%22%23D4B06A%22/%3E%3C/svg%3E") center / 18px 8px repeat-x; opacity:.55;
+  -webkit-mask:linear-gradient(90deg, transparent, #000 25%, #000 75%, transparent);
+          mask:linear-gradient(90deg, transparent, #000 25%, #000 75%, transparent)}
+.topbar .title{background:none; border:0; color:#F7F1E3; padding:0 60px;
+  font-family:var(--display); font-size:1.38rem; font-weight:700; letter-spacing:0}
+.topbar .sub{height:var(--sub-h); display:flex; align-items:center; justify-content:space-between; gap:8px;
+  margin:6px 12px 10px; padding:0 14px; border-radius:11px; font-size:.8rem; color:#C3CCD8;
+  background:rgba(0,0,0,.22); border:1px solid rgba(255,255,255,.06)}
+.topbar .sub b{color:var(--gold-hi); font-weight:600}
+.topbar .sub .k{height:24px; width:12px; stroke-width:4.2; color:var(--gold-hi); opacity:.9}
+
+.themebtn{position:absolute; inset-inline-end:12px; top:9px; width:40px; height:40px; border:0; border-radius:12px;
+  display:grid; place-items:center; color:var(--gold-hi);
+  background:rgba(255,255,255,.07); box-shadow:inset 0 0 0 1px rgba(255,255,255,.1);
+  transition:background .15s, transform .1s}
+.themebtn:active{transform:scale(.94)}
+.themebtn svg,.iconbtn svg{width:20px; height:20px}
+
+/* ================= Main ================= */
+main{padding:calc(var(--top-h) + var(--sub-h) + 16px + 24px) 16px
+  calc(var(--nav-h) + env(safe-area-inset-bottom,0px) + 44px); max-width:560px; margin:0 auto}
+.view{display:none}
+.view.active{display:block; animation:in .28s cubic-bezier(.2,.8,.2,1)}
+@keyframes in{from{opacity:0; transform:translateY(8px)}to{opacity:1; transform:none}}
+
+h2{font-family:var(--display); font-weight:700; font-size:1.6rem; line-height:1.3; margin:0 0 6px; color:var(--heading)}
+.lead{color:var(--muted); margin:0 0 20px; font-size:.94rem; max-width:40em}
+
+.hello{display:flex; align-items:flex-start; justify-content:space-between; gap:16px}
+.hello .k{width:34px; height:70px; stroke-width:3; margin-top:-2px; opacity:.85}
+
+.panel{background:var(--surface); border-radius:var(--r-panel); padding:20px; box-shadow:var(--lift); border:1px solid var(--line)}
+
+/* Inputs */
+.field{width:100%; border:1px solid var(--line); background:var(--well); border-radius:var(--r-ctl);
+  padding:14px 15px; outline:none; font-weight:500;
+  box-shadow:inset 0 1px 2px var(--shade-in);
+  transition:border-color .15s, box-shadow .15s, background-color .15s}
+.field::placeholder{color:var(--muted); opacity:.75; font-weight:400}
+.field:focus{border-color:var(--gold); background:var(--surface); box-shadow:0 0 0 4px color-mix(in srgb, var(--gold) 18%, transparent)}
+textarea.field{min-height:136px; resize:vertical; line-height:1.75}
+
+/* Buttons */
+.btn{--face:var(--btn); --face-hi:var(--btn-hi); --side:var(--btn-edge); --fg:var(--btn-fg);
+  position:relative; display:flex; align-items:center; justify-content:center; gap:8px; width:100%;
+  border:0; border-radius:var(--r-ctl); padding:15px; font-weight:600; font-size:1rem; color:var(--fg);
+  background:linear-gradient(180deg, var(--face-hi), var(--face));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16), 0 2px 0 var(--side), 0 10px 20px -12px var(--shade);
+  transition:transform .08s ease, box-shadow .08s ease, opacity .15s; margin-bottom:2px}
+.btn:hover{filter:brightness(1.06)}
+.btn:active{transform:translateY(2px); box-shadow:inset 0 1px 0 rgba(255,255,255,.12), 0 0 0 var(--side)}
+.btn[disabled]{opacity:.6; pointer-events:none}
+.btn.gold{--face:var(--gold); --face-hi:var(--gold-hi); --side:var(--gold-edge); --fg:var(--gold-ink)}
+.btn.ghost{background:transparent; color:var(--muted); box-shadow:inset 0 0 0 1px var(--line)}
+.btn.ghost:active{background:var(--well); box-shadow:inset 0 0 0 1px var(--line)}
+.gap{height:14px}
+.hint{font-size:.85rem; color:var(--muted); margin-top:10px}
+
+/* ================= Profile ================= */
+.pick{display:flex; flex-direction:column; gap:10px; margin-top:12px}
+.pick button{text-align:right; background:var(--surface); border:1px solid var(--line); border-radius:var(--r-ctl);
+  padding:12px 14px; box-shadow:var(--lift)}
+.profile-head{display:flex; align-items:center; gap:16px}
+.avatar{width:68px; height:68px; border-radius:50%; flex:none; color:#F7F1E3;
+  display:grid; place-items:center; font-family:var(--display); font-weight:700; font-size:1.8rem; overflow:hidden;
+  background:radial-gradient(circle at 35% 30%, var(--btn-hi), var(--slab) 75%);
+  box-shadow:0 0 0 2px var(--surface), 0 0 0 3.5px var(--gold), 0 10px 20px -10px var(--shade)}
+.avatar img{width:100%; height:100%; object-fit:cover}
+.profile-head .nm{font-family:var(--display); font-weight:700; font-size:1.3rem; line-height:1.35; color:var(--heading)}
+.profile-head .sj{color:var(--muted); font-size:.9rem}
+.rows{margin-top:20px; border-radius:var(--r-card); background:var(--well); padding:2px 14px; border:1px solid var(--line)}
+.row{display:flex; justify-content:space-between; align-items:center; gap:10px; padding:12px 0; border-bottom:1px solid var(--line); font-size:.93rem}
+.row:last-child{border-bottom:0}
+.row span:first-child{color:var(--muted)}
+.status{display:inline-block; padding:4px 12px; border-radius:99px; font-size:.8rem; font-weight:600}
+.status.in{background:var(--ok-soft); color:var(--ok); box-shadow:inset 0 0 0 1px var(--ok-edge)}
+.status.out{background:var(--warn-soft); color:var(--warn); box-shadow:inset 0 0 0 1px var(--warn-edge)}
+
+/* ================= Khanjar rule (فاصل الخنجر) ================= */
+.krule{display:flex; align-items:center; gap:12px; margin:22px auto; max-width:240px; color:var(--gold)}
+.krule::before,.krule::after{content:""; flex:1; height:1px;
+  background:linear-gradient(90deg, transparent, currentColor 40%, currentColor 60%, transparent); opacity:.6}
+.krule .k{width:14px; height:28px; stroke-width:4.2}
+
+/* ================= About ================= */
+.about{text-align:center; padding:30px 20px 30px; overflow:hidden; position:relative}
+.coin-stage{position:relative; width:210px; height:180px; margin:4px auto 0; perspective:700px; touch-action:pan-y}
+.coin-stage::after{content:""; position:absolute; left:18%; right:18%; bottom:-14px; height:16px; border-radius:50%;
+  background:radial-gradient(closest-side, var(--shade), transparent);
+  transform:translateX(var(--sx,0px)); transition:transform .5s ease-out}
+.coin{position:absolute; inset:0; transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)); transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.coin.live{transition:transform .08s linear}
+.coin .logo{width:100%; height:100%}
+.about .star{color:var(--gold); font-family:var(--display); font-weight:500; font-size:1rem; margin:0 0 2px}
+.about .big{font-family:var(--display); font-weight:700; font-size:1.6rem; color:var(--heading); margin:0}
+.about .small{color:var(--muted); margin:14px 0 0; font-size:.95rem}
+.about .org{font-family:var(--display); font-weight:700; font-size:1.35rem; margin:2px 0; color:var(--heading)}
+.about .motto{font-family:var(--font); font-weight:500; letter-spacing:.06em; color:var(--muted); direction:ltr; margin:2px 0 0; font-size:.9rem}
+.about .wm{position:absolute; inset-inline-start:-18px; bottom:-26px; width:80px; height:164px; color:var(--gold); opacity:.08; stroke-width:2.2; pointer-events:none}
+
+/* ================= Leave ================= */
+.outbox{border-radius:var(--r-card); padding:15px 16px; margin-bottom:18px;
+  background:var(--warn-soft); border:1px solid var(--warn-edge); border-inline-start:4px solid var(--warn)}
+.outbox .t{font-weight:700; color:var(--warn); font-family:var(--display); font-size:1.05rem}
+.outbox .m{font-size:.9rem; margin-top:4px; white-space:pre-wrap}
+
+/* ================= Dock ================= */
+.nav{position:fixed; z-index:30; left:50%; transform:translateX(-50%);
+  bottom:calc(env(safe-area-inset-bottom,0px) + 12px); width:calc(100% - 24px); max-width:520px; height:var(--nav-h);
+  display:flex; padding:0 8px; border-radius:24px; border:1px solid var(--line);
+  background:var(--surface); box-shadow:var(--lift), 0 18px 34px -18px var(--shade)}
+.nav button{flex:1; border:0; background:none; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px;
+  color:var(--muted); font-size:.8rem; font-weight:600; margin:8px 2px; border-radius:17px; transition:background-color .15s, color .15s}
+.nav button svg{width:23px; height:23px}
+.nav button.active:not(.mid){color:var(--heading); background:var(--well)}
+.nav button.active:not(.mid) svg{color:var(--gold)}
+.nav .mid{position:relative}
+.nav .mid .logo{width:62px; height:53px; transition:transform .18s cubic-bezier(.3,1.6,.5,1)}
+.nav .mid::after{content:""; position:absolute; bottom:-3px; left:50%; width:16px; height:3px; margin-left:-8px; border-radius:3px;
+  background:var(--gold); opacity:0; transform:scaleX(.3); transition:opacity .15s, transform .2s}
+.nav .mid.active::after{opacity:1; transform:none}
+.nav .mid:active .logo{transform:scale(.94)}
+
+/* الشعار: بدون خلفية */
+.logo{background:none; display:block}
+:root[data-theme="dark"] .logo img{filter:brightness(1.22) saturate(1.1)}
+.logo img,.logo svg{width:100%; height:100%; display:block; object-fit:contain}
+
+/* ================= Admin ================= */
+.overlay{position:fixed; inset:0; z-index:50; display:none; flex-direction:column;
+  background:var(--pattern) center top / 46px 46px, var(--bg)}
+.overlay.open{display:flex; animation:ovin .24s cubic-bezier(.2,.8,.2,1)}
+@keyframes ovin{from{opacity:0; transform:translateY(10px)}to{opacity:1; transform:none}}
+.ov-head{color:#fff; padding:calc(env(safe-area-inset-top,0px) + 10px) 12px 14px; display:flex; align-items:center; gap:10px;
+  background:linear-gradient(180deg, var(--slab-hi), var(--slab)); border-radius:0 0 20px 20px;
+  box-shadow:0 1px 0 color-mix(in srgb, var(--gold) 55%, transparent), 0 12px 28px -14px rgba(0,0,0,.45); position:relative; z-index:2}
+.ov-head h3{margin:0; flex:1; font-family:var(--display); font-weight:700; font-size:1.25rem; color:#F7F1E3}
+.iconbtn{border:0; color:#E8ECF2; border-radius:12px; width:40px; height:40px; display:grid; place-items:center;
+  background:rgba(255,255,255,.07); box-shadow:inset 0 0 0 1px rgba(255,255,255,.1); transition:transform .1s}
+.iconbtn:active{transform:scale(.94)}
+.iconbtn.js-theme{color:var(--gold-hi)}
+.ov-body{flex:1; overflow-y:auto; padding:22px 16px calc(env(safe-area-inset-bottom,0px) + 24px); -webkit-overflow-scrolling:touch}
+.ov-body > *{max-width:720px; margin-inline:auto}
+
+.lock{max-width:360px; margin:40px auto 0; text-align:center}
+.lock .k{width:22px; height:44px; margin:0 auto 12px; stroke-width:3.6}
+.lock .field{text-align:center; letter-spacing:.35em; font-size:1.25rem; direction:ltr}
+
+.stats{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:18px}
+.stat{background:var(--surface); border:1px solid var(--line); position:relative; overflow:hidden;
+  border-radius:var(--r-card); padding:13px 8px 11px; text-align:center; box-shadow:var(--lift)}
+.stat::before{content:""; position:absolute; top:0; left:30%; right:30%; height:2px; border-radius:0 0 2px 2px; background:var(--gold); opacity:.7}
+.stat b{display:block; font-family:var(--display); font-weight:700; font-size:1.8rem; line-height:1.2; color:var(--heading)}
+.stat span{font-size:.78rem; color:var(--muted)}
+.stat.out b{color:var(--warn)}
+.stat.out::before{background:var(--warn)}
+.find{display:flex; gap:10px; align-items:flex-start}
+.find .field{flex:1; min-width:0}
+.find .btn{width:auto; flex:none; padding-inline:18px}
+.stats.four{grid-template-columns:repeat(4,1fr)}
+@media (max-width:420px){ .stats.four{grid-template-columns:repeat(2,1fr)} }
+.day-h{font-size:.85rem; color:var(--gold); margin:18px 0 8px; font-weight:700; font-family:var(--display)}
+.pickrow{display:block; width:100%; text-align:start; background:var(--surface);
+  border:1px solid var(--line); border-radius:var(--r-ctl); padding:12px 14px; margin-top:12px; font:inherit; color:inherit; box-shadow:var(--lift)}
+.chips{display:flex; gap:8px; margin:14px 0 16px; flex-wrap:wrap}
+.chip{border:0; border-radius:99px; padding:7px 16px; font-size:.85rem; font-weight:600; color:var(--muted);
+  background:var(--surface); box-shadow:inset 0 0 0 1px var(--line); transition:background-color .15s, color .15s}
+.chip.on{color:var(--btn-fg); background:var(--btn); box-shadow:inset 0 0 0 1px var(--btn)}
+
+.list{display:flex; flex-direction:column; gap:12px}
+.item{background:var(--surface); border:1px solid var(--line);
+  border-radius:var(--r-card); padding:14px 15px; cursor:pointer; border-inline-start:4px solid var(--ok);
+  box-shadow:var(--lift); transition:transform .12s}
+.item:active{transform:scale(.99)}
+.item.open{border-inline-start-color:var(--warn)}
+.item .nm{font-weight:700; font-family:var(--display); font-size:1.05rem; color:var(--heading); background:none; border:0; padding:0;
+  text-decoration:underline; text-decoration-color:var(--line); text-underline-offset:5px}
+.cards{display:flex; gap:10px; margin:10px 0 10px}
+.tcard{flex:1; border-radius:11px; padding:7px 11px; font-size:.78rem; line-height:1.4}
+.tcard b{display:block; font-size:.95rem; font-family:var(--display); font-weight:700}
+.tcard.exit{background:var(--gold-soft); box-shadow:inset 0 0 0 1px var(--gold-soft-edge)}
+.tcard.ret{background:var(--ok-soft); color:var(--ok); box-shadow:inset 0 0 0 1px var(--ok-edge)}
+.tcard.ret.none{background:var(--warn-soft); color:var(--warn); box-shadow:inset 0 0 0 1px var(--warn-edge)}
+.msg{font-size:.82rem; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.msg i{font-style:normal; color:var(--text); font-weight:600}
+.hist-h{display:flex; align-items:center; gap:10px; font-size:1.15rem; margin:30px 0 4px; font-family:var(--display); font-weight:700; color:var(--heading)}
+.hist-h::after{content:""; flex:1; height:1px; background:linear-gradient(90deg, transparent, var(--line))}
+.hist-h::before{content:""; width:9px; height:18px; flex:none; background:var(--gold);
+  -webkit-mask:var(--k-mask) center / contain no-repeat; mask:var(--k-mask) center / contain no-repeat}
+.hist{display:flex; flex-direction:column; gap:12px}
+.hist .h{background:var(--surface); border:1px solid var(--line);
+  border-radius:var(--r-card); padding:13px 15px; border-inline-start:4px solid var(--ok); box-shadow:var(--lift)}
+.hist .h.open{border-inline-start-color:var(--warn)}
+.hist .d{font-weight:700; font-size:.95rem; font-family:var(--display); color:var(--heading)}
+.hist .ln{display:flex; gap:8px; margin-top:6px; font-size:.88rem}
+.hist .ln b{flex:none; min-width:52px; color:var(--muted); font-weight:600}
+.hist .ln span{white-space:pre-wrap}
+.hist .dur{font-size:.8rem; color:var(--muted); margin-top:6px}
+.empty{text-align:center; color:var(--muted); padding:36px 10px}
+.empty::before{content:""; display:block; width:16px; height:32px; margin:0 auto 10px; background:var(--silver); opacity:.7;
+  -webkit-mask:var(--k-mask) center / contain no-repeat; mask:var(--k-mask) center / contain no-repeat}
+
+/* ================= Sheet ================= */
+.sheet-bg{position:fixed; inset:0; z-index:60; background:var(--scrim); display:none; align-items:flex-end; justify-content:center}
+.sheet-bg.open{display:flex}
+.sheet{background:var(--surface); width:100%; max-width:560px; max-height:88vh; overflow-y:auto; overscroll-behavior:contain;
+  border-radius:24px 24px 0 0; border:1px solid var(--line); border-bottom:0;
+  box-shadow:0 -20px 40px -10px var(--shade);
+  padding:12px 18px calc(env(safe-area-inset-bottom,0px) + 24px); animation:up .26s cubic-bezier(.2,.8,.2,1)}
+@keyframes up{from{transform:translateY(40px); opacity:0}to{transform:none; opacity:1}}
+.grab{width:44px; height:5px; background:var(--line); border-radius:9px; margin:0 auto 16px}
+.sec{margin-top:14px; padding:13px 14px; border-radius:var(--r-ctl); background:var(--well); border:1px solid var(--line)}
+.sec h4{margin:0 0 4px; font-size:.85rem; color:var(--muted); font-weight:600}
+.sec .when{font-weight:700}
+.sec p{margin:6px 0 0; white-space:pre-wrap; word-break:break-word}
+.copy{border:0; color:var(--btn-fg); border-radius:8px; padding:5px 12px; font-size:.8rem; font-weight:600;
+  background:var(--btn); transition:transform .08s}
+.copy:active{transform:scale(.95)}
+
+/* ================= Toast ================= */
+.toast{position:fixed; z-index:80; left:50%; top:calc(env(safe-area-inset-top,0px) + 118px);
+  transform:translate(-50%,-14px); color:var(--btn-fg); padding:13px 22px; border-radius:14px; font-weight:600; opacity:0; pointer-events:none;
+  background:var(--slab); box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--gold) 45%, transparent), 0 16px 30px -10px rgba(0,0,0,.45);
+  transition:opacity .25s, transform .25s cubic-bezier(.2,.8,.2,1); text-align:center; max-width:90vw}
+.toast.show{opacity:1; transform:translate(-50%,0)}
+.toast.welcome{background:linear-gradient(180deg, var(--gold-hi), var(--gold)); color:var(--gold-ink); box-shadow:0 16px 30px -10px rgba(0,0,0,.45);
+  font-family:var(--display); font-weight:700; font-size:1.35rem; padding:16px 30px}
+.toast.err{background:#9E2F37; color:#fff; box-shadow:0 16px 30px -10px rgba(0,0,0,.45)}
+.spin{width:18px; height:18px; border:2.5px solid currentColor; border-top-color:transparent; opacity:.8; border-radius:50%; animation:sp .7s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+
+@media (prefers-reduced-motion:reduce){
+  .view.active,.overlay.open,.sheet{animation:none}
+  .coin,.coin-stage::after,.btn,.item,.chip,.toast{transition:none}
+}
+
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="khanjar" viewBox="11 3 52 106"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M13 11C23 5 41 5 51 11C47.5 15 41.5 16.5 37.5 17.5L36 27H28L26.5 17.5C22.5 16.5 16.5 15 13 11Z"/><path d="M21.5 27H42.5C42.5 31 40.5 33 37.5 33H26.5C23.5 33 21.5 31 21.5 27Z"/><path d="M24 33C23 52 23 70 25 84C27 98 37 106 47 104C52 103 55 99 56.5 95M40 33C39 46 38 58 38 70C38 82 40 90 45 92.5C49 94.5 52 94 54.5 92.5"/><path d="M24.2 41Q32 44 39.8 41M23.8 49Q31 52 39.3 49"/><circle cx="20" cy="45" r="2.4"/><circle cx="20.4" cy="66" r="2.4"/></g><g fill="currentColor"><circle cx="57" cy="91.5" r="3"/><circle cx="31" cy="58" r="1.3"/><circle cx="31" cy="66" r="1.3"/><circle cx="31.4" cy="74" r="1.3"/><circle cx="32.6" cy="82" r="1.3"/><circle cx="35.4" cy="89.5" r="1.3"/><circle cx="40" cy="95.5" r="1.3"/></g></symbol></svg>
+
+<!-- ===== Top bars ===== -->
+<header class="topbar">
+  <div class="bar">
+    <button class="title" id="adminOpen" aria-label="لوحة الإدارة">سجل استئذان المعلمين</button>
+    <button class="themebtn js-theme" type="button" aria-label="تفعيل الوضع الليلي"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></button>
+  </div>
+  <div class="sub"><span>مدرسة <b>الحواري بن مالك</b></span><svg class="k" aria-hidden="true"><use href="#khanjar"/></svg><span>المدير: <b>أ. راشد القطيطي</b></span></div>
+</header>
+
+<main>
+  <!-- ===== أنت ===== -->
+  <section class="view active" id="v-you">
+    <div id="loginBox">
+      <div class="hello">
+        <div><h2>أهلاً بك</h2>
+        <p class="lead">أدخل رقمك الوظيفي لعرض ملفك. سيُفتح ملفك تلقائياً في المرات القادمة.</p></div>
+        <svg class="k" aria-hidden="true"><use href="#khanjar"/></svg>
+      </div>
+      <div class="panel">
+        <input class="field" id="jobInput" placeholder="الرقم الوظيفي" inputmode="numeric" autocomplete="off" enterkeyhint="go" dir="ltr" style="text-align:center">
+        <div class="gap"></div>
+        <button class="btn" id="findBtn">دخول</button>
+        <div class="pick" id="pickList"></div>
+      </div>
+    </div>
+    <div id="profileBox" hidden></div>
+  </section>
+
+  <!-- ===== عن المدرسة ===== -->
+  <section class="view" id="v-about">
+    <div class="panel about">
+      <div class="coin-stage" id="coinStage">
+        <div class="coin" id="coin"><div class="logo" data-logo></div></div>
+      </div>
+      <div class="krule"><svg class="k" aria-hidden="true"><use href="#khanjar"/></svg></div>
+      <p class="star">مدير المدرسة</p>
+      <p class="big">الأستاذ، راشد القطيطي</p>
+      <p class="small">ضمن مبادرات</p>
+      <p class="org">الحواري AI</p>
+      <p class="small" style="margin-top:4px">مدرسة الحواري بن مالك</p>
+      <div class="krule"><svg class="k" aria-hidden="true"><use href="#khanjar"/></svg></div>
+      <p class="star">الابتكار الدائم</p>
+      <p class="motto">Always Innovating</p>
+      <svg class="k wm" aria-hidden="true"><use href="#khanjar"/></svg>
+    </div>
+  </section>
+
+  <!-- ===== الاستئذان ===== -->
+  <section class="view" id="v-leave">
+    <h2>الاستئذان</h2>
+    <p class="lead" id="leaveLead">اكتب سبب خروجك، ثم أرسل.</p>
+    <div id="leaveBody"></div>
+  </section>
+</main>
+
+<!-- ===== Bottom nav (RTL: first = rightmost) ===== -->
+<nav class="nav">
+  <button data-tab="you" class="active">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+    أنت
+  </button>
+  <button data-tab="about" class="mid" aria-label="عن المدرسة"><div class="logo" data-logo></div></button>
+  <button data-tab="leave">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-4"/><path d="M9 16l-4-4 4-4"/><path d="M5 12h10"/></svg>
+    الاستئذان؟
+  </button>
+</nav>
+
+<!-- ===== Admin overlay ===== -->
+<div class="overlay" id="admin">
+  <div class="ov-head">
+    <button class="iconbtn" id="adminClose" aria-label="إغلاق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
+    <h3>لوحة الإدارة</h3>
+    <button class="iconbtn js-theme" type="button" aria-label="تفعيل الوضع الليلي"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></button>
+    <button class="iconbtn" id="adminRefresh" aria-label="تحديث" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 12a8 8 0 1 1-2.3-5.7"/><path d="M20 4v5h-5"/></svg></button>
+    <button class="iconbtn" id="adminLogout" aria-label="خروج من اللوحة" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0"/></svg></button>
+  </div>
+  <div class="ov-body">
+    <div class="lock" id="lockBox">
+      <svg class="k" aria-hidden="true"><use href="#khanjar"/></svg>
+      <h2>الرمز السري</h2>
+      <p class="lead">أدخل رمز الإدارة. سيُحفظ على هذا الجهاز.</p>
+      <input class="field" id="pinInput" type="password" inputmode="numeric" autocomplete="off" enterkeyhint="go">
+      <div class="gap"></div>
+      <button class="btn" id="pinBtn">دخول</button>
+    </div>
+    <div id="dash" hidden>
+      <div class="stats">
+        <div class="stat out"><b id="sOut">0</b><span>خارج الآن</span></div>
+        <div class="stat"><b id="sToday">0</b><span>استئذانات اليوم</span></div>
+        <div class="stat"><b id="sBack">0</b><span>عادوا اليوم</span></div>
+      </div>
+      <div class="find">
+        <input class="field" id="adminSearch" placeholder="الرقم الوظيفي أو اسم المعلم" autocomplete="off">
+        <button class="btn" id="adminFind">فتح الملف</button>
+      </div>
+      <div class="chips">
+        <button class="chip on" data-f="today">اليوم</button>
+        <button class="chip" data-f="out">لم يرجع</button>
+      </div>
+      <p class="hint" style="margin:-6px 0 12px">تظهر هنا استئذانات اليوم فقط. للأيام السابقة افتح ملف المعلم برقمه الوظيفي.</p>
+      <div class="list" id="adminList"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Sheet ===== -->
+<div class="sheet-bg" id="sheetBg"><div class="sheet" id="sheet"></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+/* ============ الإعدادات ============ */
+const SUPABASE_URL = 'https://iuclootkunogsreaampr.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_efeOJYJphIJwkRo5Fy9uLw_J1u4e-a2';
+const ADMIN_PIN    = '123454321';
+// ضع رابط الشعار هنا (أو صورة base64). اتركه فارغاً لاستخدام الشعار المؤقت.
+const LOGO_SRC     = 'data:image/png;base64,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';
+
+const K = { teacher:'hawari_teacher', admin:'hawari_admin_ok' };
+const TZ = 'Asia/Muscat';
+const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+/* ============ أدوات ============ */
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const store = {
+  get(k){ try{ return JSON.parse(localStorage.getItem(k)); }catch{ return null; } },
+  set(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch{} },
+  del(k){ try{ localStorage.removeItem(k); }catch{} }
+};
+const fmtTime = d => new Intl.DateTimeFormat('ar-OM-u-nu-latn',{timeZone:TZ,hour:'numeric',minute:'2-digit'}).format(new Date(d));
+const fmtDate = d => new Intl.DateTimeFormat('ar-OM-u-nu-latn',{timeZone:TZ,weekday:'long',day:'numeric',month:'long'}).format(new Date(d));
+const dayKey  = d => new Intl.DateTimeFormat('en-CA',{timeZone:TZ}).format(new Date(d));
+const isToday = d => dayKey(d) === dayKey(new Date());
+const whenLabel = d => (isToday(d) ? 'اليوم' : fmtDate(d)) + '، ' + fmtTime(d);
+function duration(a,b){
+  const m = Math.max(0, Math.round((new Date(b) - new Date(a)) / 60000));
+  if (m < 60) return m + ' دقيقة';
+  const h = Math.floor(m/60), r = m%60;
+  return h + ' ساعة' + (r ? ' و' + r + ' دقيقة' : '');
+}
+let toastT;
+function toast(msg, type=''){
+  const t = $('#toast'); t.textContent = msg; t.className = 'toast show ' + type;
+  clearTimeout(toastT); toastT = setTimeout(() => t.className = 'toast ' + type, type==='welcome' ? 2600 : 2200);
+}
+function busy(btn, on, label){
+  btn.disabled = on;
+  if (on){ btn.dataset.l = btn.innerHTML; btn.innerHTML = '<span class="spin"></span>'; }
+  else btn.innerHTML = label || btn.dataset.l;
+}
+
+/* ============ الشعار ============ */
+const LOGO_SVG = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="50" cy="50" r="41" fill="none" stroke="#B38B3F" stroke-width="2"/>
+  <text x="50" y="62" text-anchor="middle" font-family="Reem Kufi, sans-serif" font-size="40" fill="#B38B3F">ح</text>
+  <text x="50" y="84" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#2F7A68">AI</text></svg>`;
+document.querySelectorAll('[data-logo]').forEach(el =>
+  el.innerHTML = LOGO_SRC ? `<img src="${esc(LOGO_SRC)}" alt="شعار الحواري AI" width="364" height="311" decoding="async">` : LOGO_SVG);
+
+/* ============ التبويبات ============ */
+function go(tab){
+  document.querySelectorAll('.nav button').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+  document.querySelectorAll('.view').forEach(v => v.classList.toggle('active', v.id === 'v-' + tab));
+  if (tab === 'leave') renderLeave();
+  window.scrollTo(0,0);
+}
+document.querySelectorAll('.nav button').forEach(b => b.onclick = () => go(b.dataset.tab));
+
+/* ============ الجداول (Supabase) ============
+   Teachers: id, created_at, teacher_name, job_number, speciality
+   exit:     id, created_at, date, time, teacher_name, status, excuse
+   كل خروج = صف status='خروج'، وكل رجوع = صف status='رجوع' (رسالة الرجوع في excuse). */
+const T_TEACHERS = 'Teachers', T_EXIT = 'exit';
+const S_OUT = 'خروج', S_IN = 'رجوع';
+const localDate = d => new Intl.DateTimeFormat('en-CA',{timeZone:TZ}).format(d);
+const localTime = d => new Intl.DateTimeFormat('en-GB',{timeZone:TZ,hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(d);
+const initial = n => esc((n || '').trim()[0] || '؟');
+
+/* يحوّل صفوف exit إلى رحلات: {name, exit_time, exit_message, return_time, return_message} */
+function pairTrips(rows){
+  const asc = [...rows].sort((a,b) => new Date(a.created_at) - new Date(b.created_at));
+  const open = {}, trips = [];
+  for (const r of asc){
+    const n = (r.teacher_name || '').trim();
+    if (r.status === S_IN){
+      if (open[n]){ open[n].return_time = r.created_at; open[n].return_message = r.excuse || ''; open[n].retId = r.id; delete open[n]; }
+    } else {
+      const t = { id:r.id, name:n, exit_time:r.created_at, exit_message:r.excuse || '', return_time:null, return_message:'' };
+      trips.push(t); open[n] = t;
+    }
+  }
+  return trips.reverse();
+}
+
+/* ============ سجل المعلم المحلي ============
+   رسائل الخروج والرجوع تُحفظ على جهاز المعلم فقط، ولا تُقرأ من القاعدة في واجهة المعلم.
+   من يدخل برقم المعلم من جهاز آخر لن يرى هذه الرسائل. */
+const histKey = () => 'hawari_hist_' + teacher.id;
+const getHist = () => (teacher && store.get(histKey())) || [];
+function addHist(type, msg){
+  const h = getHist(); h.push({ type, at:new Date().toISOString(), msg: msg || '' });
+  store.set(histKey(), h.slice(-400));
+}
+function localTrips(){
+  const trips = [];
+  for (const e of getHist()){
+    if (e.type === 'out') trips.push({ exit_time:e.at, exit_message:e.msg, return_time:null, return_message:'' });
+    else { const t = trips[trips.length - 1]; if (t && !t.return_time){ t.return_time = e.at; t.return_message = e.msg; } }
+  }
+  return trips.reverse();
+}
+function histHTML(){
+  const list = localTrips().slice(0, 30);
+  if (!list.length) return `<h3 class="hist-h">استئذاناتي</h3><div class="empty" style="padding:24px 10px">لا توجد استئذانات مسجّلة على هذا الجهاز.</div>`;
+  return `<h3 class="hist-h">استئذاناتي</h3>
+    <p class="hint" style="margin:0 0 10px">محفوظة على هذا الجهاز فقط.</p>
+    <div class="hist">${list.map(t => `
+      <div class="h${t.return_time ? '' : ' open'}">
+        <div class="d">${esc(isToday(t.exit_time) ? 'اليوم' : fmtDate(t.exit_time))}</div>
+        <div class="ln"><b>خروج ${fmtTime(t.exit_time)}</b><span>${esc(t.exit_message) || '—'}</span></div>
+        ${t.return_time
+          ? `<div class="ln"><b>رجوع ${fmtTime(t.return_time)}</b><span>${esc(t.return_message) || '—'}</span></div>
+             <div class="dur">المدة: ${duration(t.exit_time, t.return_time)}</div>`
+          : '<div class="dur">لم يُسجَّل الرجوع بعد</div>'}
+      </div>`).join('')}</div>`;
+}
+
+/* ============ المعلم ============ */
+let teacher = store.get(K.teacher);
+if (teacher && !teacher.teacher_name){ teacher = null; store.del(K.teacher); }
+let openTrip = null;
+
+async function refreshTeacher(){
+  if (!teacher) return;
+  const { data } = await db.from(T_TEACHERS).select('*').eq('id', teacher.id).maybeSingle();
+  if (data){ teacher = data; store.set(K.teacher, data); }
+}
+async function loadOpenTrip(){
+  openTrip = null;
+  if (!teacher) return;
+  const { data } = await db.from(T_EXIT).select('created_at,status').eq('teacher_name', teacher.teacher_name)
+    .order('created_at', { ascending:false }).limit(1);
+  const last = data?.[0];
+  if (last && last.status !== S_IN){
+    /* نص الرسالة يُعرض فقط إن كان الخروج مسجّلاً من هذا الجهاز */
+    const mine = localTrips()[0];
+    const local = mine && !mine.return_time && Math.abs(new Date(mine.exit_time) - new Date(last.created_at)) < 10*60*1000;
+    openTrip = { exit_time:last.created_at, exit_message: local ? mine.exit_message : null };
+  }
+}
+
+/* يحوّل الأرقام العربية/الفارسية إلى أرقام إنجليزية ويزيل المسافات */
+const normDigits = v => (v || '').replace(/[٠-٩]/g, d => d.charCodeAt(0) - 0x0660)
+  .replace(/[۰-۹]/g, d => d.charCodeAt(0) - 0x06F0).replace(/\s+/g, '');
+
+async function findTeacher(){
+  const q = normDigits($('#jobInput').value);
+  const list = $('#pickList'); list.innerHTML = '';
+  if (!q){ toast('أدخل رقمك الوظيفي', 'err'); $('#jobInput').focus(); return; }
+  const btn = $('#findBtn'); busy(btn, true);
+  /* بحث مرن ثم مطابقة دقيقة بالأرقام فقط، لتجاوز المسافات والرموز المخفية في القاعدة */
+  const { data: rows, error } = await db.from(T_TEACHERS).select('*').ilike('job_number', `%${q}%`).limit(20);
+  busy(btn, false);
+  if (error){ toast('تعذّر الاتصال بقاعدة البيانات', 'err'); console.error(error); return; }
+  const onlyDigits = v => normDigits(String(v ?? '')).replace(/\D/g, '');
+  const data = (rows || []).filter(t => onlyDigits(t.job_number) === q.replace(/\D/g, ''));
+  if (!data.length){ list.innerHTML = '<p class="hint">لا يوجد معلم بهذا الرقم الوظيفي. تأكد من الرقم أو راجع الإدارة.</p>'; return; }
+  selectTeacher(data[0]);
+}
+$('#findBtn').onclick = findTeacher;
+$('#jobInput').onkeydown = e => { if (e.key === 'Enter') findTeacher(); };
+
+async function selectTeacher(t){
+  teacher = t; store.set(K.teacher, t);
+  $('#pickList').innerHTML = ''; $('#jobInput').value = '';
+  await renderProfile();
+}
+
+async function renderProfile(){
+  const box = $('#profileBox');
+  if (!teacher){ box.hidden = true; $('#loginBox').hidden = false; return; }
+  $('#loginBox').hidden = true; box.hidden = false;
+  paintProfile(null);
+  await Promise.all([refreshTeacher(), loadOpenTrip()]);
+  const month = localDate(new Date()).slice(0,7);
+  const count = getHist().filter(e => e.type === 'out' && localDate(new Date(e.at)).slice(0,7) === month).length;
+  paintProfile(count);
+}
+function paintProfile(count){
+  const t = teacher;
+  $('#profileBox').innerHTML = `
+    <h2>ملفي</h2><p class="lead">هذا ملفك المحفوظ على هذا الجهاز.</p>
+    <div class="panel">
+      <div class="profile-head">
+        <div class="avatar">${initial(t.teacher_name)}</div>
+        <div><div class="nm">${esc(t.teacher_name)}</div><div class="sj">${esc(t.speciality || 'معلم')}</div></div>
+      </div>
+      <div class="rows">
+        <div class="row"><span>الحالة</span>${openTrip
+          ? `<span class="status out">خارج المدرسة منذ ${fmtTime(openTrip.exit_time)}</span>`
+          : '<span class="status in">داخل المدرسة</span>'}</div>
+        <div class="row"><span>الرقم الوظيفي</span><span dir="ltr">${esc(t.job_number || '—')}</span></div>
+        ${t.phone ? `<div class="row"><span>رقم الهاتف</span><span dir="ltr">${esc(t.phone)}</span></div>` : ''}
+        <div class="row"><span>استئذاناتي هذا الشهر (على هذا الجهاز)</span><span>${count === null ? '…' : count}</span></div>
+      </div>
+      <div class="gap"></div>
+      <button class="btn gold" id="goLeave">${openTrip ? 'تسجيل الرجوع' : 'طلب استئذان'}</button>
+      <div class="gap"></div>
+      <button class="btn ghost" id="switchT">لست أنا؟ تغيير المعلم</button>
+    </div>`;
+  $('#goLeave').onclick = () => go('leave');
+  $('#switchT').onclick = () => { teacher = null; openTrip = null; store.del(K.teacher); renderProfile(); };
+}
+
+/* ============ الاستئذان ============ */
+async function renderLeave(){
+  const body = $('#leaveBody'), lead = $('#leaveLead');
+  if (!teacher){
+    lead.textContent = 'سجّل دخولك أولاً من تبويب «أنت».';
+    body.innerHTML = '<button class="btn" id="toYou">تسجيل الدخول</button>';
+    $('#toYou').onclick = () => go('you'); return;
+  }
+  body.innerHTML = '<div class="empty">جارٍ التحميل…</div>';
+  await loadOpenTrip();
+  if (!openTrip){
+    lead.textContent = 'اكتب سبب خروجك، ثم أرسل.';
+    body.innerHTML = `<div class="panel">
+      <textarea class="field" id="exitMsg" placeholder="مثال: مراجعة المستشفى، أتوقع العودة خلال ساعة"></textarea>
+      <div class="gap"></div>
+      <button class="btn" id="sendExit">إرسال الاستئذان</button>
+      <p class="hint">يُسجَّل وقت الخروج تلقائياً باسم: ${esc(teacher.teacher_name)}</p></div>` + histHTML();
+    $('#sendExit').onclick = sendExit;
+  } else {
+    lead.textContent = 'أنت الآن خارج المدرسة. سجّل رجوعك عند وصولك.';
+    body.innerHTML = `<div class="outbox">
+        <div class="t">خرجت ${whenLabel(openTrip.exit_time)}</div>
+        ${openTrip.exit_message !== null ? `<div class="m">${esc(openTrip.exit_message)}</div>` : ''}</div>
+      <div class="panel">
+        <textarea class="field" id="retMsg" placeholder="نبذة عن رجوعك (اختياري)"></textarea>
+        <div class="gap"></div>
+        <button class="btn gold" id="sendRet">الرجوع إلى المدرسة</button></div>` + histHTML();
+    $('#sendRet').onclick = sendReturn;
+  }
+}
+function exitRow(status, excuse){
+  const now = new Date();
+  return { teacher_name: teacher.teacher_name, status, excuse, date: localDate(now), time: localTime(now) };
+}
+async function sendExit(){
+  const msg = $('#exitMsg').value.trim();
+  if (!msg){ toast('اكتب نص رسالة الاستئذان', 'err'); $('#exitMsg').focus(); return; }
+  const btn = $('#sendExit'); busy(btn, true);
+  const { error } = await db.from(T_EXIT).insert(exitRow(S_OUT, msg));
+  busy(btn, false);
+  if (error){ toast('لم يُرسل الاستئذان، حاول مرة أخرى', 'err'); console.error(error); return; }
+  addHist('out', msg);
+  toast('تم إرسال الاستئذان');
+  renderLeave(); renderProfile();
+}
+async function sendReturn(){
+  const btn = $('#sendRet'); busy(btn, true);
+  const retMsg = $('#retMsg').value.trim();
+  const { error } = await db.from(T_EXIT).insert(exitRow(S_IN, retMsg || null));
+  busy(btn, false);
+  if (error){ toast('لم يُسجَّل الرجوع، حاول مرة أخرى', 'err'); console.error(error); return; }
+  addHist('in', retMsg);
+  toast('أهلاً وسهلاً بك', 'welcome');
+  renderLeave(); renderProfile();
+}
+
+/* ============ لوحة الإدارة ============ */
+let trips = [], filter = 'today', channel = null;
+$('#adminOpen').onclick = () => {
+  $('#admin').classList.add('open'); document.body.style.overflow = 'hidden';
+  store.get(K.admin) ? unlock() : ($('#lockBox').hidden = false, $('#dash').hidden = true, setTimeout(() => $('#pinInput').focus(), 50));
+};
+$('#adminClose').onclick = () => { $('#admin').classList.remove('open'); document.body.style.overflow = ''; };
+function tryPin(){
+  if ($('#pinInput').value === ADMIN_PIN){ store.set(K.admin, true); $('#pinInput').value = ''; unlock(); }
+  else { toast('الرمز غير صحيح', 'err'); $('#pinInput').select(); }
+}
+$('#pinBtn').onclick = tryPin;
+$('#pinInput').onkeydown = e => { if (e.key === 'Enter') tryPin(); };
+$('#adminLogout').onclick = () => {
+  store.del(K.admin); $('#dash').hidden = true; $('#lockBox').hidden = false;
+  $('#adminRefresh').hidden = $('#adminLogout').hidden = true;
+  if (channel){ db.removeChannel(channel); channel = null; }
+};
+$('#adminRefresh').onclick = loadTrips;
+
+function unlock(){
+  $('#lockBox').hidden = true; $('#dash').hidden = false;
+  $('#adminRefresh').hidden = $('#adminLogout').hidden = false;
+  loadTrips();
+  if (!channel){
+    channel = db.channel('exit-log').on('postgres_changes', { event:'*', schema:'public', table:T_EXIT }, loadTrips).subscribe();
+  }
+}
+async function loadTrips(){
+  if (!trips.length) $('#adminList').innerHTML = '<div class="empty">جارٍ التحميل…</div>';
+  /* لوحة الإدارة تعرض رسائل اليوم فقط، وتُفرَّغ تلقائياً مع بداية يوم جديد */
+  const { data, error } = await db.from(T_EXIT).select('*').eq('date', localDate(new Date()))
+    .order('created_at', { ascending:false }).limit(1000);
+  if (error){ $('#adminList').innerHTML = '<div class="empty">تعذّر تحميل السجل. تحقق من الاتصال وصلاحيات جدول exit.</div>'; console.error(error); return; }
+  trips = pairTrips(data); renderAdmin();
+}
+document.querySelectorAll('.chip').forEach(c => c.onclick = () => {
+  filter = c.dataset.f; document.querySelectorAll('.chip').forEach(x => x.classList.toggle('on', x === c)); renderAdmin();
+});
+$('#adminSearch').oninput = renderAdmin;
+$('#adminSearch').onkeydown = e => { if (e.key === 'Enter') adminFind(); };
+$('#adminFind').onclick = adminFind;
+
+/* عند بداية يوم جديد تُفرَّغ القائمة */
+let shownDay = localDate(new Date());
+setInterval(() => { const d = localDate(new Date()); if (d !== shownDay){ shownDay = d; if (!$('#dash').hidden) loadTrips(); } }, 60000);
+
+/* البحث عن معلم بالرقم الوظيفي (أو بالاسم) وفتح ملفه */
+async function adminFind(){
+  const raw = $('#adminSearch').value.trim();
+  if (!raw){ toast('اكتب الرقم الوظيفي للمعلم', 'err'); return; }
+  const q = normDigits(raw);
+  const btn = $('#adminFind'); busy(btn, true);
+  let data, error;
+  if (/^\d+$/.test(q)){
+    ({ data, error } = await db.from(T_TEACHERS).select('*').ilike('job_number', `%${q}%`).limit(20));
+    if (data) data = data.filter(t => normDigits(String(t.job_number ?? '')).replace(/\D/g, '') === q);
+  } else {
+    ({ data, error } = await db.from(T_TEACHERS).select('*').ilike('teacher_name', `%${raw}%`).order('teacher_name').limit(15));
+  }
+  busy(btn, false);
+  if (error){ toast('تعذّر الاتصال بقاعدة البيانات', 'err'); console.error(error); return; }
+  if (!data.length){ toast(/^\d+$/.test(q) ? 'لا يوجد معلم بهذا الرقم الوظيفي' : 'لا يوجد معلم بهذا الاسم', 'err'); return; }
+  if (data.length === 1) return openTeacherFile(data[0]);
+  openSheet('<h2>اختر المعلم</h2>' + data.map((t,i) =>
+    `<button class="pickrow" data-i="${i}">${esc(t.teacher_name)} <span class="hint" dir="ltr">${esc(t.job_number || '')}</span></button>`).join(''));
+  document.querySelectorAll('#sheet .pickrow').forEach(b => b.onclick = () => openTeacherFile(data[b.dataset.i]));
+}
+
+function renderAdmin(){
+  const today = trips.filter(p => isToday(p.exit_time));
+  $('#sOut').textContent = today.filter(p => !p.return_time).length;
+  $('#sToday').textContent = today.length;
+  $('#sBack').textContent = today.filter(p => p.return_time).length;
+
+  const q = $('#adminSearch').value.trim();
+  let rows = filter === 'out' ? today.filter(p => !p.return_time) : today;
+  if (q && !/^\d+$/.test(normDigits(q))) rows = rows.filter(p => p.name.includes(q));
+  const list = $('#adminList');
+  if (!rows.length){
+    list.innerHTML = `<div class="empty">${filter === 'out' ? 'جميع المعلمين داخل المدرسة.' : 'لا توجد استئذانات اليوم.'}</div>`; return;
+  }
+  list.innerHTML = rows.map(p => `
+    <div class="item ${p.return_time ? '' : 'open'}" data-id="${p.id}" tabindex="0">
+      <button class="nm">${esc(p.name)}</button>
+      <div class="cards">
+        <div class="tcard exit">خروج<b>${isToday(p.exit_time) ? fmtTime(p.exit_time) : whenLabel(p.exit_time)}</b></div>
+        <div class="tcard ret ${p.return_time ? '' : 'none'}">رجوع<b>${p.return_time ? fmtTime(p.return_time) : 'لم يرجع'}</b></div>
+      </div>
+      <div class="msg"><i>الاستئذان:</i> ${esc(p.exit_message)}</div>
+      ${p.return_message ? `<div class="msg"><i>الرجوع:</i> ${esc(p.return_message)}</div>` : ''}
+    </div>`).join('');
+  list.querySelectorAll('.item').forEach(el => {
+    const trip = trips.find(p => p.id == el.dataset.id);
+    const open = () => showDetails(trip);
+    el.onclick = e => { if (!e.target.closest('.nm')) open(); };
+    el.onkeydown = e => { if (e.key === 'Enter' && e.target === el) open(); };
+    el.querySelector('.nm').onclick = e => { e.stopPropagation(); showTeacher(trip.name); };
+  });
+}
+
+/* ============ النوافذ المنبثقة ============ */
+function openSheet(html){ $('#sheet').innerHTML = '<div class="grab"></div>' + html; $('#sheetBg').classList.add('open'); }
+function closeSheet(){ $('#sheetBg').classList.remove('open'); }
+$('#sheetBg').onclick = e => { if (e.target.id === 'sheetBg') closeSheet(); };
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSheet(); });
+
+function showDetails(p){
+  openSheet(`
+    <h2><button id="dName" style="font:inherit;color:inherit;background:none;border:0;padding:0;text-decoration:underline;text-underline-offset:5px">${esc(p.name)}</button></h2>
+    <p class="lead" style="margin:0">${p.return_time ? 'مدة الغياب: ' + duration(p.exit_time, p.return_time) : '<span class="status out">لم يرجع بعد</span>'}</p>
+    <div class="sec"><h4>موعد الخروج</h4><div class="when">${whenLabel(p.exit_time)}</div>
+      <p>${esc(p.exit_message)}</p></div>
+    <div class="sec"><h4>موعد الرجوع</h4><div class="when">${p.return_time ? whenLabel(p.return_time) : 'لم يرجع'}</div>
+      ${p.return_time ? `<p>${p.return_message ? esc(p.return_message) : '<span class="hint">لم يكتب رسالة رجوع</span>'}</p>` : ''}</div>
+    <div class="gap"></div><button class="btn ghost" id="sClose">إغلاق</button>`);
+  $('#dName').onclick = () => showTeacher(p.name);
+  $('#sClose').onclick = closeSheet;
+}
+
+async function copyText(txt, btn){
+  try { await navigator.clipboard.writeText(txt); }
+  catch { const ta = document.createElement('textarea'); ta.value = txt; document.body.append(ta); ta.select(); document.execCommand('copy'); ta.remove(); }
+  btn.textContent = 'تم النسخ'; toast('تم النسخ');
+}
+
+async function showTeacher(name){
+  const { data } = await db.from(T_TEACHERS).select('*').eq('teacher_name', name).limit(1);
+  openTeacherFile(data?.[0] || { teacher_name:name, _missing:true });
+}
+
+/* ملف المعلم الكامل: كل الأيام + إحصائيات */
+async function openTeacherFile(t){
+  openSheet('<div class="empty">جارٍ تحميل ملف المعلم…</div>');
+  const { data, error } = await db.from(T_EXIT).select('*').eq('teacher_name', t.teacher_name)
+    .order('created_at', { ascending:false }).limit(5000);
+  if (error){ openSheet('<div class="empty">تعذّر تحميل سجل المعلم.</div>'); console.error(error); return; }
+  const all = pairTrips(data);
+  const outs = data.filter(r => r.status !== S_IN).length;
+  const ins  = data.filter(r => r.status === S_IN).length;
+  const notBack = all.filter(p => !p.return_time).length;
+  const month = localDate(new Date()).slice(0,7);
+  const thisMonth = all.filter(p => localDate(new Date(p.exit_time)).slice(0,7) === month).length;
+  const done = all.filter(p => p.return_time);
+  const totalMs = done.reduce((a,p) => a + (new Date(p.return_time) - new Date(p.exit_time)), 0);
+  const avgMs = done.length ? totalMs / done.length : 0;
+
+  const numRow = (label, val) => val ? `<div class="row"><span>${label}</span><span style="display:flex;gap:8px;align-items:center">
+      <span dir="ltr">${esc(val)}</span><button class="copy" data-copy="${esc(val)}">نسخ</button></span></div>` : '';
+
+  /* تجميع الاستئذانات حسب اليوم */
+  let lastDay = '', listHTML = '';
+  for (const p of all){
+    const d = dayKey(p.exit_time);
+    if (d !== lastDay){ lastDay = d; listHTML += `<div class="day-h">${esc(isToday(p.exit_time) ? 'اليوم' : fmtDate(p.exit_time))} <span dir="ltr">${d}</span></div>`; }
+    listHTML += `<div class="sec" style="margin-top:6px">
+      <div class="when">خروج ${fmtTime(p.exit_time)} ${p.return_time
+        ? '← رجوع ' + fmtTime(p.return_time) + ` <span class="hint">(${duration(p.exit_time, p.return_time)})</span>`
+        : '<span class="status out">لم يرجع</span>'}</div>
+      <p class="msg" style="white-space:pre-wrap"><i>الاستئذان:</i> ${esc(p.exit_message) || '—'}</p>
+      ${p.return_message ? `<p class="msg" style="white-space:pre-wrap"><i>الرجوع:</i> ${esc(p.return_message)}</p>` : ''}
+    </div>`;
+  }
+
+  openSheet(`
+    <div class="profile-head">
+      <div class="avatar">${initial(t.teacher_name)}</div>
+      <div><div class="nm">${esc(t.teacher_name)}</div><div class="sj">${esc(t.speciality || (t._missing ? 'غير موجود في جدول المعلمين' : 'معلم'))}</div></div>
+    </div>
+    <div class="gap"></div>
+    <div class="stats four">
+      <div class="stat"><b>${outs}</b><span>مرات الخروج</span></div>
+      <div class="stat"><b>${ins}</b><span>مرات الرجوع</span></div>
+      <div class="stat out"><b>${notBack}</b><span>لم يرجع</span></div>
+      <div class="stat"><b>${thisMonth}</b><span>هذا الشهر</span></div>
+    </div>
+    <div class="rows">
+      ${numRow('الرقم الوظيفي', t.job_number)}
+      ${numRow('رقم الهاتف', t.phone)}
+      <div class="row"><span>الحالة الآن</span>${all[0] && !all[0].return_time
+        ? '<span class="status out">خارج المدرسة</span>' : '<span class="status in">داخل المدرسة</span>'}</div>
+      <div class="row"><span>مجموع مدة الغياب</span><span>${done.length ? duration(0, totalMs) : '—'}</span></div>
+      <div class="row"><span>متوسط مدة الاستئذان</span><span>${done.length ? duration(0, avgMs) : '—'}</span></div>
+      <div class="row"><span>آخر استئذان</span><span>${all[0] ? whenLabel(all[0].exit_time) : '—'}</span></div>
+    </div>
+    <h4 style="margin:20px 0 4px;color:var(--muted);font-size:.85rem">سجل الاستئذانات (${all.length})</h4>
+    ${all.length ? listHTML : '<div class="empty" style="padding:24px 10px">لا توجد استئذانات مسجّلة لهذا المعلم.</div>'}
+    <div class="gap"></div><button class="btn ghost" id="sClose">إغلاق</button>`);
+  $('#sClose').onclick = closeSheet;
+  document.querySelectorAll('#sheet [data-copy]').forEach(b => b.onclick = () => copyText(b.dataset.copy, b));
+}
+
+
+/* ============ الوضع الليلي ============ */
+const THEME_KEY = 'hawari_theme';
+const ICON_MOON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>`;
+const ICON_SUN = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>`;
+const sysDark = window.matchMedia('(prefers-color-scheme: dark)');
+const currentTheme = () => document.documentElement.getAttribute('data-theme') || (sysDark.matches ? 'dark' : 'light');
+function paintThemeUI(){
+  const dark = currentTheme() === 'dark';
+  document.querySelectorAll('.js-theme').forEach(b => {
+    b.innerHTML = dark ? ICON_SUN : ICON_MOON;
+    const l = dark ? 'تفعيل الوضع النهاري' : 'تفعيل الوضع الليلي';
+    b.setAttribute('aria-label', l); b.title = l;
+  });
+  const m = document.getElementById('themeColor'); if (m) m.content = dark ? '#111A29' : '#15253D';
+}
+function toggleTheme(){
+  const next = currentTheme() === 'dark' ? 'light' : 'dark';
+  const root = document.documentElement;
+  root.classList.add('theming');
+  root.setAttribute('data-theme', next);
+  try { localStorage.setItem(THEME_KEY, next); } catch {}
+  paintThemeUI();
+  setTimeout(() => root.classList.remove('theming'), 400);
+}
+document.querySelectorAll('.js-theme').forEach(b => b.onclick = toggleTheme);
+sysDark.addEventListener?.('change', paintThemeUI);
+paintThemeUI();
+
+/* ============ الشعار ثلاثي الأبعاد ============ */
+(function(){
+  const stage = $('#coinStage'), coin = $('#coin'), panel = document.querySelector('.about');
+  if (!stage || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const clamp = v => Math.max(-1, Math.min(1, v));
+  panel.addEventListener('pointermove', e => {
+    const r = stage.getBoundingClientRect();
+    const x = clamp((e.clientX - (r.left + r.width/2)) / (r.width * 1.2));
+    const y = clamp((e.clientY - (r.top + r.height/2)) / (r.height * 1.2));
+    coin.classList.add('live');
+    coin.style.setProperty('--ry', (x * 32).toFixed(1) + 'deg');
+    coin.style.setProperty('--rx', (-y * 26).toFixed(1) + 'deg');
+    stage.style.setProperty('--sx', (-x * 12).toFixed(1) + 'px');
+  });
+  const reset = () => { coin.classList.remove('live'); coin.style.setProperty('--ry','0deg'); coin.style.setProperty('--rx','0deg'); stage.style.setProperty('--sx','0px'); };
+  panel.addEventListener('pointerleave', reset);
+  panel.addEventListener('pointerup', reset);
+})();
+
+/* ============ البدء ============ */
+renderProfile();
+});
+</script>
+</body>
+</html>
